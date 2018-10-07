@@ -1,0 +1,23 @@
+{
+    "LINK_CONFIRM": "auth/confirm",
+    "LINK_DECLARE": "identify/user",
+    "LINK_INVEST_CREATE": "invest/create",
+    "LINK_INVEST_SUCCESS_LIST_GET": "loan/current?status=success",
+    "LINK_INVEST_WAITING_LIST_GET": "loan/invested/waiting",
+    "LINK_LOAN_CREATE": "loan/create",
+    "LINK_LOAN_GET": "loan/me",
+    "LINK_LOAN_CLEAN_GET": "loan/me?status=clean",
+    "LINK_LOAN_DETAIL_GET": "loan/details?id=",
+    "LINK_LOAN_FAIL_GET": "loan/me?status=fail",
+    "LINK_LOAN_WAITING_LIST_GET": "loan/current?status=waiting",
+    "LINK_LOAN_SUBMIT": "loan/rate",
+    "LINK_LOAN_SETTLE": "settle/loan",
+    "LINK_SETTLEMENT_GET": "settle?loanId=",
+    "LINK_SIGNIN": "auth/signin",
+    "LINK_SIGNOUT": "auth/signout",
+    "LINK_SIGNUP": "auth/signup",
+    "LINK_SUMMARY_GET": "invest/summary/success",
+    "LINK_USER_INFO_GET": "identify/user/me",
+    "LINK_USER_INFO_PATCH": "identify/user/me",
+    "LINK_URL": "https://p2p-lending-14clc.herokuapp.com/"
+}
