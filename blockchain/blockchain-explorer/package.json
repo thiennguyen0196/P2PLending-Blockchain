@@ -1,0 +1,37 @@
+{
+  "name": "hyperledger-explorer",
+  "version": "0.3.0",
+  "description": "hyperledger-explorer",
+  "private": true,
+  "main": "main.js",
+  "keywords": [
+    "fabric-client sample app",
+    "v1.0.0 fabric nodesdk sample"
+  ],
+  "scripts": {
+    "start": "node main.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "dependencies": {
+    "ajv": "^5.5.2",
+    "body-parser": "^1.17.2",
+    "co": "^4.6.0",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "express-fileupload": "^0.4.0",
+    "fabric-ca-client": "^1.1.0",
+    "fabric-client": "^1.1.0",
+    "fast-stats": "0.0.3",
+    "http-status-codes": "^1.3.0",
+    "log4js": "^0.6.38",
+    "multer": "^1.3.0",
+    "pg": "^7.4.1",
+    "prettyjson": "^1.2.1",
+    "stomp-broker-js": "^0.1.3",
+    "stompjs": "^2.3.3",
+    "winston": "^2.2.0",
+    "ws": "^5.1.1"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {}
+}

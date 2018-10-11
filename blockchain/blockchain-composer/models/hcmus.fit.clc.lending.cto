@@ -1,0 +1,173 @@
+
+namespace hcmus.fit.clc.lending
+
+/**Enum, concept declaration */
+enum Sex {
+	o male
+	o female
+}
+
+enum LoanStatus {
+	o waiting
+	o success
+	o clean
+	o fail
+}
+
+enum InvestingStatus {
+	o waiting_other
+  o waiting_transfer
+  o fail_transfer
+	o success
+  o clean
+  o fail
+}
+
+enum SettlementStatus {
+	o undue
+  o due
+	o settled
+	o overdue
+}
+
+concept UserDetails {
+	o String name optional
+	o String email optional
+	o String address optional
+	o String city optional
+	o String ssn
+	o String job
+	o Long income
+  o Integer score
+	o DateTime birth optional
+	o Sex sex optional
+}
+
+concept LoanAplication {
+	o Long capital
+	o Double rate
+	o Integer periodMonth
+	o String willing
+  o DateTime maturityDate
+  o DateTime createdDate
+  o DateTime investingEndDate
+  o Long monthlyPrincipalPay
+  o Long monthlyInterestPay
+  o Long monthlyPay 
+	o Long entirelyPay
+}
+
+concept InvestApplication {
+	o Long capital
+	o Integer numNotes
+  o Double serviceFee
+	o Long monthlyPrincipalIncome
+	o Long monthlyInterestIncome
+  o Long monthlyIncome
+  o Long monthlyProfit
+	o Long entirelyProfit
+  o DateTime createdDate
+}
+
+concept SettlementApplication {
+  o Long principalAmount
+	o Long interestAmount  
+	o Long penaltyAmount optional
+  o Long totalAmount
+	o DateTime maturityDate
+	o DateTime realpaidDate optional
+}
+
+/**Participant part */
+abstract participant User identified by _id {
+	o String _id
+	o String phone
+}
+
+participant Borrower extends User{
+	o UserDetails details
+}
+
+participant Lender extends User{
+	o UserDetails details optional
+}
+
+/**contract part */
+asset LoanContract identified by contractId {
+	o String contractId
+	o LoanAplication info
+	o Integer totalNotes
+	o LoanStatus status
+	o String extra optional
+	--> Borrower borrower
+}
+
+asset SettlementContract identified by contractId {
+	o String contractId
+	o SettlementStatus status
+  o SettlementApplication info
+  o Integer orderNo
+	o String extra optional
+  --> Borrower borrower
+  --> LoanContract loan
+}
+
+asset InvestingContract identified by contractId {
+	o String contractId
+	o InvestApplication info
+	o InvestingStatus status
+	o String extra optional
+	--> Lender lender
+  --> LoanContract loan
+}
+
+asset InvestingFeeContract identified by contractId {
+	o String contractId
+  o String extra optional
+  o Long feeAmount
+  --> SettlementContract settledContract
+  --> InvestingContract[] investContract
+}
+
+/**Transaction part */
+
+/**Borrower */
+transaction createLoanContract{
+  o String loanId
+  o LoanAplication info
+  o Integer totalNotes
+}
+
+transaction createSettlementContract{
+  o String loanId
+  o String[] settledId
+}
+
+transaction settleLoanContract {
+  o String settledId
+  o DateTime realpaidDate
+}
+
+/**Lender */
+transaction createInvestContract{
+  o String investId
+  o String loanId
+  o InvestApplication info
+}
+
+/*Network Admin */
+transaction onFullFilledLoanContract {
+  o String loanId
+  o LoanStatus loanStatus
+  o InvestingStatus investStatus
+}
+
+transaction onFullFilledSettlementContract {
+  o String settledId
+  o SettlementStatus status
+}
+
+transaction createInvestFeeContract {
+  o String[] feeId
+  o String loanId
+}

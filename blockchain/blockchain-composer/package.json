@@ -1,0 +1,22 @@
+{
+  "name": "p2plending-network",
+  "version": "0.0.1",
+  "description": "building smart contract for p2plending version test",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "THIEN NGUYEN",
+  "email": "thiensmail96@gmail.com",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "composer-admin": "^0.16.6",
+    "composer-client": "^0.16.6",
+    "composer-common": "^0.16.6",
+    "composer-connector-embedded": "^0.16.6",
+    "chai": "latest",
+    "eslint": "latest",
+    "istanbul": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

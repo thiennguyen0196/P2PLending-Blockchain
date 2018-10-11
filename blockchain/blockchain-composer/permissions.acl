@@ -1,0 +1,166 @@
+/*
+  1. Network Admin 
+  2. End User(borrowers and lenders)
+  3. System User
+  4. Other User
+*/
+
+/*1. Network Admin Rule*/
+	rule SystemACL {
+		description: "System ACL to permit all access"
+		participant: "org.hyperledger.composer.system.Participant"
+		operation: ALL
+		resource: "org.hyperledger.composer.system.**"
+		action: ALLOW
+	}
+
+	rule NetworkAdminUser {
+		description: "Grant business network administrators full access to user resources"
+		participant: "org.hyperledger.composer.system.NetworkAdmin"
+		operation: ALL
+		resource: "**"
+		action: ALLOW
+	}
+
+	rule NetworkAdminSystem {
+		description: "Grant business network administrators full access to system resources"
+		participant: "org.hyperledger.composer.system.NetworkAdmin"
+		operation: ALL
+		resource: "org.hyperledger.composer.system.**"
+		action: ALLOW
+	}
+/*2. End User Rule*/
+	/*2.1 Common Rule*/
+		rule UserReadParticipantAccess {
+			description: "Users can only read their information"
+			participant(p): "hcmus.fit.clc.lending.User"
+			operation: READ
+			resource(r): "hcmus.fit.clc.lending.User"
+			condition: (p.getIdentifier() == r.getIdentifier())
+			action: ALLOW
+		}
+
+		rule UserPaticipantAccess {
+			description: "Users can not create any participant"
+			participant: "hcmus.fit.clc.lending.User"
+			operation: CREATE, UPDATE, DELETE
+			resource: "hcmus.fit.clc.lending.User"
+			action: DENY
+		}
+
+    rule BorrowerUpdateSettlementAccess {
+      description: "Borrower can only view their settlement"
+      participant(p): "hcmus.fit.clc.lending.Borrower"
+      operation: UPDATE
+      resource(r):  "hcmus.fit.clc.lending.SettlementContract"
+      condition: (p.getIdentifier() == r.borrower.getIdentifier())
+      action: ALLOW
+    }
+
+		rule UserResourceAccess {
+			description: "Users can not modified(delete, update) any resource"
+			participant: "hcmus.fit.clc.lending.User"
+			operation: UPDATE, DELETE
+			resource: "hcmus.fit.clc.lending.*"
+			action: DENY
+		}
+
+	/*2.2 Borrowers' Rule*/
+		/*Loan Contract*/
+			rule BorrowerCreateLoanAccess {
+				description: "Borrower can only create loan contract through transaction createLoan"
+				participant: "hcmus.fit.clc.lending.Borrower"
+				operation: CREATE
+				resource: "hcmus.fit.clc.lending.LoanContract"
+				transaction: "hcmus.fit.clc.lending.createLoanContract"
+				action: ALLOW
+			}
+
+			rule BorrowerReadLoanAccess {
+				description: "Borrower can only view their loans contract"
+				participant(p): "hcmus.fit.clc.lending.Borrower"
+				operation: READ
+				resource(r):  "hcmus.fit.clc.lending.LoanContract"
+				condition: (p.getIdentifier() == r.borrower.getIdentifier())
+				action: ALLOW
+			}
+		/*Settlement Contract*/
+			rule BorowerCreateSettlementAccess {
+				description: "Borrower can only apply Settlement contract through transaction settledLoan"
+				participant: "hcmus.fit.clc.lending.Borrower"
+				operation: CREATE
+				resource: "hcmus.fit.clc.lending.SettlementContract"
+				transaction: "hcmus.fit.clc.lending.createSettlementContract"
+				action: ALLOW
+			}
+
+			rule BorrowerReadSettlementAccess {
+				description: "Borrower can only view their settlement"
+				participant(p): "hcmus.fit.clc.lending.Borrower"
+				operation: READ
+				resource(r):  "hcmus.fit.clc.lending.SettlementContract"
+				condition: (p.getIdentifier() == r.borrower.getIdentifier())
+				action: ALLOW
+			}
+		/*Transaction*/
+			rule BorrowerLoanTransactionAccess {
+				description: "Borrower can create and read their own createLoanContract transaction"
+				participant: "hcmus.fit.clc.lending.Borrower"
+				operation: CREATE, READ
+				resource:  "hcmus.fit.clc.lending.createLoanContract"
+				action: ALLOW
+			}
+
+			rule BorrowerSettlementTransactionAccess {
+				description: "Borrower can create and read their own createSettlementContract transaction"
+				participant: "hcmus.fit.clc.lending.Borrower"
+				operation: CREATE, READ
+				resource:  "hcmus.fit.clc.lending.createSettlementContract"
+				action: ALLOW
+			}
+
+      rule BorrowerSettleLoanTransactionAccess {
+				description: "Borrower can create and read their own createLoanContract transaction"
+				participant: "hcmus.fit.clc.lending.Borrower"
+				operation: CREATE, READ
+				resource:  "hcmus.fit.clc.lending.settleLoanContract"
+				action: ALLOW
+			}
+
+	/*2.3 Lenders' Rules*/
+		/*Invest Contract*/
+			rule LenderCreateInvestAccess {
+				description: "Lender can only create invest contract through transaction investLoan"
+				participant: "hcmus.fit.clc.lending.Lender"
+				operation: CREATE
+				resource: "hcmus.fit.clc.lending.InvestingContract"
+				transaction: "hcmus.fit.clc.lending.createInvestContract"
+				action: ALLOW
+			}
+
+			rule LenderReadInvestAccess {
+				description: "Lender can only read their invest contracts"
+				participant(p): "hcmus.fit.clc.lending.Lender"
+				operation: READ
+				resource(r):  "hcmus.fit.clc.lending.InvestingContract"
+				condition: (p.getIdentifier() == r.lender.getIdentifier())
+				action: ALLOW
+			}
+		/*Loan Contract*/
+			rule LenderReadLoanAccess {
+				description: "Lender can read all waiting loans and Loans have been invested by them"
+				participant(p): "hcmus.fit.clc.lending.Lender"
+				operation: READ
+				resource(r):  "hcmus.fit.clc.lending.LoanContract"
+				condition: (r.status != "fail")
+				action: ALLOW
+			}
+		/*Transaction*/
+			rule LenderInvestTransactionAccess {
+				description: "Lender can create and read their own investLoan transaction"
+				participant: "hcmus.fit.clc.lending.Lender"
+				operation: CREATE, READ
+				resource:  "hcmus.fit.clc.lending.createInvestContract"
+				action: ALLOW
+			}
+		/*Invest Contract Fee*/

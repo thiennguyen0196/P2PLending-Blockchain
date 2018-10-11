@@ -1,0 +1,13 @@
+{
+	"pg": {
+		"host": "127.0.0.1",
+		"port": "5432",
+		"database": "fabricexplorer",
+		"username": "hppoc",
+		"passwd": "password"
+	},
+	"host": "localhost",
+	"port": "8080",
+	"license": "Apache-2.0",
+	"platforms": ["fabric"]
+}

@@ -1,0 +1,36 @@
+{
+	"network-config": {
+		"org1": {
+			"name": "blockchain-org1peer1",
+			"mspid": "Org1MSP",
+			"peer1": {
+				"requests": "grpc://173.193.120.168:30110",
+				"events": "grpc://173.193.120.168:30111",
+				"server-hostname": "peer0.org1.example.com"
+			},
+			"admin": {
+				"key": "tmp/keystore",
+				"cert": "tmp/signcerts"
+			}
+		},
+		"org2": {
+			"name": "blockchain-org2peer1",
+			"mspid": "Org2MSP",
+			"peer1": {
+				"requests": "grpc://173.193.120.168:30210",
+				"events": "grpc://173.193.120.168:30211",
+				"server-hostname": "peer0.org2.example.com"
+			},
+			"admin": {
+				"key": "tmp/keystore",
+				"cert": "tmp/signcerts"
+			}
+		  }
+	},
+	"channel": "channel1",
+	"keyValueStore": "/tmp/admin_blockchain-org1peer1",
+	"eventWaitTime": "30000",
+    "license": "Apache-2.0",
+    "version": "1.0"
+}
+
