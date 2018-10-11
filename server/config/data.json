@@ -1,0 +1,30 @@
+{
+	"test":{
+		"MONGODB_URI": "mongodb://localhost:27017/TestP2PLending",
+		"PORT": 3000,
+		"JWT_PAYLOAD": "auth_token_payload",
+		"JWT_AUTH": "AUTH_P2PLENDING",
+		"TWILLIO_ACCOUNT_ID": "AC6cce5d72db153d8bbb43d62d916de7aa",
+		"TWILLIO_ACCOUNT_TOKEN": "ec8afbcebdd6661271cd24a7b0bbf844",
+		"TWILLIO_PHONE_NUMBER": "+16052504383",
+		"HLFV1_ADMIN_CARD": "admin@testnet",
+		"HLFV1_NAMESPACE": "hcmus.fit.clc.lending",
+		"HLFV1_VERSION": 1,
+		"NETWORK_NAME": "testnet",
+		"NOTES": 3
+	},
+  	"development":{
+		"MONGODB_URI": "mongodb://localhost:27017/DevP2PLending",
+		"PORT": 3000,
+		"JWT_PAYLOAD": "auth_token_payload",
+		"JWT_AUTH": "AUTH_P2PLENDING",
+		"TWILLIO_ACCOUNT_ID": "AC6cce5d72db153d8bbb43d62d916de7aa",
+		"TWILLIO_ACCOUNT_TOKEN": "ec8afbcebdd6661271cd24a7b0bbf844",
+		"TWILLIO_PHONE_NUMBER": "+16052504383",
+		"HLFV1_ADMIN_CARD": "admin@testnet",
+		"HLFV1_NAMESPACE": "hcmus.fit.clc.lending",
+		"HLFV1_VERSION": 1,
+		"NETWORK_NAME": "testnet",
+		"NOTES": 3
+	}
+}

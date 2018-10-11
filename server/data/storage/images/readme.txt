@@ -1,0 +1,1 @@
+This folder contains some user image that using for evaluating personal score.

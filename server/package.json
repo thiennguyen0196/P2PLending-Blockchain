@@ -1,0 +1,32 @@
+{
+	"name": "server",
+	"version": "0.0.1",
+	"description": "RESTful API server for p2plending application",
+	"main": "app.js",
+	"scripts": {
+		"start": "node server.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Thien Nguyen <1453045@student.hcmus.edu.vn>",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"bluebird": "^3.5.1",
+		"body-parser": "^1.18.2",
+		"composer-admin": "^0.16.5",
+		"composer-client": "^0.16.5",
+		"composer-common": "^0.16.5",
+		"express": "^4.16.3",
+		"jsonwebtoken": "^8.2.0",
+		"lodash": "^4.17.5",
+		"mongodb": "^3.0.4",
+		"mongoose": "^5.0.11",
+		"multer": "^1.3.0",
+		"twilio": "^3.13.1",
+		"validator": "^9.4.1"
+	},
+	"devDependencies": {
+		"eslint": "^4.19.1",
+		"eslint-config-rallycoding": "^3.2.0"
+	}
+}

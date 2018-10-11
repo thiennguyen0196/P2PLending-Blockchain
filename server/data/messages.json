@@ -1,0 +1,48 @@
+{
+	"common": {
+		"blockchainErr": "Hệ thống Blockchain bị lỗi",
+		"incorrectTokenErr": "Mã token không đúng",
+		"internalErr": "Server bị lỗi",
+		"missingField": "Dữ liệu nhập vào bị thiếu",
+		"missingInfoErr": "Bạn cần khai báo thông tin cá nhân để thực hiện chức năng này",
+		"permissionErr": "Bạn không có quyền thực hiện chức năng này",
+		"verifyingErr": "Server gửi xác thực bị lỗi"
+	},
+	"loan": {
+		"existLoan": "Bạn chỉ có thể tạo một khoản vay ở một thời điểm",
+		"incorrectCapital": "Số tiền vay phải nằm trong khoảng 1 triệu đến 50 triệu VNĐ",
+		"incorrectId": "Mã đơn vay không tồn tại",
+		"incorrectMonth": "Số tháng vay phải trong khoảng 1 đến 18 tháng",
+		"incorrectWilling": "Mục đích vay của bạn phải rõ ràng",
+		"incorrectMaturityDate": "Ngày giải ngân hằng tháng không hợp lệ"
+	},
+	"invest": {
+		"existInvest": "Bạn đã đầu tư khoản vay này. Không thể đầu tư lại",
+		"penalty": "Bạn không thể đầu tư vì vi phạm cam kết đầu tư ở đơn đầu tư: ",
+		"incorrectLoan": "Khoản vay này không thể đầu tư thêm được nữa",
+		"missingLoan": "Khoản vay không tồn tại nên không thể đầu tư"
+	},
+	"registers": {
+		"incorrectCode": "Mã xác thực không đúng. Vui lòng thử lại",
+		"incorrectPhone": "Tài khoản chưa được đăng ký mã xác thực",
+		"verifyCode": "Mã xác thực của bạn là"
+	},
+	"settlement": {
+		"incorrectId": "Kỳ hạn giải ngân không đúng. Vui lòng thử lại"
+	},
+	"users": {
+		"existPhone": "Số điện thoại đã được sử dụng",
+		"incorrectAcc": "Tài khoản không tồn tại",
+		"incorrectCategory": "Loại người dùng không đúng",
+		"incorrectInfo": "Thông tin nhập vào không hợp lệ",
+		"incorrectPhone": "Chuỗi nhập vào không phải số điện thoại",
+		"incorrectPass": "Mật khẩu không chính xác"
+	},
+	"userDetails": {
+		"existDetails": "Thông tin cá nhân đã tồn tại. Vui lòng hãy sử dụng chức năng update",
+		"incorrectImg": "Không tìm thấy file hình ảnh hợp lệ",
+		"incorrectSSN": "Số CMND không hợp lệ",
+		"missingDetails": "Dữ liệu không tồn tại. Vui lòng hãy sử dụng chức năng cung cấp thông tin",
+		"missingFile": "File ảnh tải lên bị thiếu hoặc không hợp lệ"	
+	}
+}
