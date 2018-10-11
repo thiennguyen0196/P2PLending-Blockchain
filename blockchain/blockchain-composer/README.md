@@ -47,7 +47,7 @@ Nguyễn Thanh Sơn - Trưởng phòng PayooX, VietUnion
 
 ### Hướng dẫn triển khai mạng lưới ở IBM Kubernetes IBM Service
 
-1. Làm theo hướng dẫn trong thư mục LIB/ibm-container-service
+1. Làm theo hướng dẫn [IBM Container Service](ibm-container-service.md)
 2. Mở đường link https://your-kubernetes-public-ip:31080 hoặc http://173.193.120.168:31080 (do nhóm thực hiện sẵn)
 3. Tạo mới một business netword archive với user = admin và password = password (nút Deploy new business network)
 4. Mở BNA vừa tạo.
